@@ -10,7 +10,7 @@ type CharacterGalleryProps = {
 export default function CharacterGallery({characters}: CharacterGalleryProps) {
 
     return (
-        <div className="character-gallery__gallery">
+        <div className="character-gallery">
             {characters.length
                 ? characters.map((char) => <CharacterCard key={char.id} character={char}/>)
                 : <div className={"character-gallery__error-text"}>No Characters found!</div>
