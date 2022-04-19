@@ -20,11 +20,14 @@ export default function CharacterGallery({characters}: CharacterGalleryProps) {
 
     return (<>
         <div className={"character-gallery__action-bar"}>
-            <input className={"character-gallery__search-input"} placeholder={"Search"} value={searchText} onChange={onSearchInputChange}/>
+            <input className={"character-gallery__search-input"} placeholder={"Search"} value={searchText}
+                   onChange={onSearchInputChange}/>
         </div>
         <div className="character-gallery__gallery">
-            {filteredCharacters.map((char) => <CharacterCard key={char.id} character={char}/>)}
+            {filteredCharacters.length
+                ? filteredCharacters.map((char) => <CharacterCard key={char.id} character={char}/>)
+                : <div className={"character-gallery__error-text"}>No Characters found!</div>
+            }
         </div>
     </>)
-
 }

@@ -11,10 +11,16 @@
     border-radius: 8px;
 }
 
+.character-gallery__error-text {
+    font-size: x-large;
+    color: white;
+    margin: 16px 0px;
+}
+
 .character-gallery__gallery {
     display: flex;
     flex-wrap: wrap;
-    justify-content:  center;
+    justify-content: center;
 }
 
 .character-gallery__gallery .character-card {
