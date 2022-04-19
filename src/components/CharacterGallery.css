@@ -1,22 +1,9 @@
-
-.character-gallery__action-bar {
-    display: flex;
-    border-bottom: #3c3e44 3px solid;
-    padding: 24px;
-}
-
-.character-gallery__search-input {
-    margin: 5px;
-    height: 32px;
-    border-radius: 8px;
-}
-
-.character-gallery__gallery {
+.character-gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content:  center;
 }
 
-.character-gallery__gallery .character-card {
+.character-gallery .character-card {
     margin: 12px;
 }

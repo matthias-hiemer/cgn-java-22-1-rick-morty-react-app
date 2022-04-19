@@ -2,6 +2,8 @@
 import './App.css';
 import CharacterGallery from "./components/CharacterGallery";
 import Header from "./components/Header";
+import {ChangeEvent, useState} from "react";
+import ActionBar from "./components/ActionBar";
 
 
 export default function App() {
@@ -679,12 +681,22 @@ export default function App() {
     ]
   }
 
+  const [searchText, setSearchText] = useState<string>("")
+
+  const filteredCharacters = charactersResponse.results.filter(character => character.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()))
+
+  const onSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchText(event.target.value)
+  }
+
   return (
     <div className="App">
 
       <Header />
 
-      <CharacterGallery characters={charactersResponse.results} />
+      <ActionBar searchText={searchText} onSearchInputChange={onSearchInputChange}/>
+      
+      <CharacterGallery characters={filteredCharacters} />
 
     </div>
   );
