@@ -1,28 +1,25 @@
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
+import axios from "axios";
+import {useEffect, useState} from "react";
 import {Character} from "../model/Character";
 
-export type CharacterDetailsPageProps = {
-    characters: Character[]
-}
+export default function CharacterDetailsPage() {
 
-export default function CharacterDetailsPage({characters}: CharacterDetailsPageProps) {
-
-    const navigate = useNavigate()
+    const [character, setCharacter] = useState<Character>()
     const params = useParams()
     const id = params.id
 
-    if (id === undefined) {
-        navigate("/")
-        return (<></>);
-    }
-
-    const character = characters.find(character => character.id === parseInt(id))
-
-    if (character === undefined) {
-        return (<>Character not found!</>)
-    }
+    useEffect(() => {
+        axios.get("https://rickandmortyapi.com/api/character/" + id)
+            .then(response => response.data)
+            .then(data => setCharacter(data))
+            .catch(console.error)
+    }, [])
 
     return (
-        <>Character {character.name}</>
+        <div>
+            {character && <>Character {character.name}</>}
+        </div>
+
     )
 }

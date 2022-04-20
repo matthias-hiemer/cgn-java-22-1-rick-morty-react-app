@@ -29,7 +29,7 @@ export default function App() {
             <Routes>
                 <Route path={"/"} element={<Homepage />}/>
                 <Route path={"/gallery"} element={<GalleryPage characters={characters}/>}/>
-                <Route path={"/character/:id"} element={<CharacterDetailsPage characters={characters}/>} />
+                <Route path={"/character/:id"} element={<CharacterDetailsPage />} />
             </Routes>
         </BrowserRouter>
     )
