@@ -4,21 +4,11 @@ import {fetchCharacters} from "../services/RickAndMortyApiService";
 import ActionBar from "../components/ActionBar";
 import CharacterGallery from "../components/CharacterGallery";
 
-export default function GalleryPage() {
-    const [characters, setCharacters] = useState<Character[]>([])
+export type GalleryPageProps = {
+    characters: Character[]
+}
 
-    useEffect(() => {
-        getCharactersFromApi()
-    }, [])
-
-    const getCharactersFromApi = () => {
-        fetchCharacters("https://rickandmortyapi.com/api/character")
-            .then(response => {
-                setCharacters(response.results)
-            })
-            .catch(error => console.log(error))
-    }
-
+export default function GalleryPage({characters} : GalleryPageProps) {
     const [searchText, setSearchText] = useState<string>("")
 
     const filteredCharacters = characters.filter(character => character.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()))
@@ -32,7 +22,7 @@ export default function GalleryPage() {
 
             <ActionBar searchText={searchText} onSearchInputChange={onSearchInputChange}/>
 
-            <CharacterGallery characters={filteredCharacters} />
+            <CharacterGallery characters={filteredCharacters}/>
 
         </div>
     );
