@@ -5,5 +5,7 @@ export type Character = {
     name : string,
     status : string,
     image : string,
-    origin : Origin
+    origin : Origin,
+    gender: string,
+    species: string
 }

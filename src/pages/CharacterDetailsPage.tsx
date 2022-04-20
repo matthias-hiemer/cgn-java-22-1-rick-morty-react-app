@@ -2,6 +2,7 @@ import {useParams} from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {Character} from "../model/Character";
+import CharacterCardDetail from "../components/CharacterCardDetail";
 
 export default function CharacterDetailsPage() {
 
@@ -18,7 +19,7 @@ export default function CharacterDetailsPage() {
 
     return (
         <div>
-            {character && <>Character {character.name}</>}
+            {character && <CharacterCardDetail character={character} />}
         </div>
 
     )
